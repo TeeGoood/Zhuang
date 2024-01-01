@@ -1,0 +1,31 @@
+brand
+	normal  
+	-hex #3559E0
+	-hsb (227, 76, 88)
+	
+	dark
+	-hex #081132
+	-hsb (227, 84, 20)
+	
+	notThatLight
+	-hex #a7b6f0
+
+	light
+	-hex #E7EBFB
+	-hsb (228, 8, 98)	
+
+danger
+	normal  
+	-hex #ED4012
+	-hsb (13, 92, 93)
+	
+	light
+	-hex #F9BCAC	
+
+approval
+	normal  
+	-hex #5CE01F
+	-hsb (101, 86, 88)
+	
+	light
+	-hex #D1F6C0	
