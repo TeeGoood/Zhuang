@@ -23,8 +23,8 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
             const response = await axios.get(uri);
             const data = response.data[0];
             data.date = new Date(data.date);
-            setClassData(prev => data);
-            setIsChecked(prev => data.paid);
+            setClassData(() => data);
+            setIsChecked(() => data.paid);
         }
         catch(err){
             console.log(err);
@@ -32,7 +32,7 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
     }
 
 
-    const handdleCheck = async (event : MouseEvent<HTMLInputElement, MouseEvent>) => {
+    const handdleCheck = async (event : any) => {
         event.stopPropagation();
         const value = !isChecked;
         try{
