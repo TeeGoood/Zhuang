@@ -1,11 +1,11 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { redirect, useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const CourseForm = () => {
     const {id} = useParams();
-    const uri = `https://${import.meta.env.VITE_API_DOMAIN}/courses/${id}`;
+    const uri = `${import.meta.env.VITE_API_DOMAIN}/courses/${id}`;
 
     const [inputs, setInputs] = useState({
         name: "",

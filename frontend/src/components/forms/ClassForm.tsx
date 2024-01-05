@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const ClassForm = () => {
     const {id} = useParams();
-    const uri = `https://${import.meta.env.VITE_API_DOMAIN}/classes/${id}`;
+    const uri = `${import.meta.env.VITE_API_DOMAIN}/classes/${id}`;
     const [inputs, setInputs] = useState({
         date: "",
         paid: false,
