@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useParams } from "react-router-dom";
+import { redirect, useLocation, useParams } from "react-router-dom";
 
 const CourseForm = () => {
     const {id} = useParams();
