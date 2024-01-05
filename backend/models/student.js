@@ -3,9 +3,18 @@ const Schema = mongoose.Schema;
 
 const StudentSchema = new Schema(
     {
-        username : String,
-        fname : String,
-        lname : String,
+        username : {
+            type : String,
+            required : true
+        },
+        fname : {
+            type : String,
+            required : true
+        },
+        lname : {
+            type : String,
+            required : true
+        },
         courses : [Schema.Types.ObjectId]
     },
     { timestamps: true, versionKey: false }

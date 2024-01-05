@@ -11,12 +11,12 @@ const Course = require('../models/course');
 
 classes.save().then(() => console.log("finished!!!")); */
 
-router.get('/:parentId', async (req, res) => {
-    const { parentId } = req.params;
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
 
     try{
-        const classes = await Class.find({parentId : parentId});
-        res.json(classes);
+        const classData = await Class.find({_id : id});
+        res.json(classData);
     }
     catch(err){
         res.send("error :" + err);

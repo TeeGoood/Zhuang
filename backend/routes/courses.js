@@ -14,13 +14,12 @@ const Student = require('../models/student');
 
 course.save().then(() => console.log("finished!!!")); */
 
-router.get('/:parentId', async (req, res) => {
-    const { parentId } = req.params;
+router.get('/:id', async (req, res) => {
+    const { id } = req.params;
 
     try{
-        const student = await Course.find({parentId : parentId});
-        const courses = student.courses
-        res.json(courses);
+        const course = await Course.find({_id : id});
+        res.json(course);
     }
     catch(err){
         res.send("error :" + err);

@@ -21,9 +21,22 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/:id', async (req, res) => {
+    const {id} = req.params;
+
+    try{
+        const student = await Student.find({ _id : id});
+        res.json(student);
+    }
+    catch(err){
+        res.send("error : " + err);
+    }
+})
+
 router.post('/', async (req, res) => {
     const payload = req.body;
     const student = new Student(payload);
+    console.log("student create");
 
     try{
         await student.save();

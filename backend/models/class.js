@@ -3,8 +3,18 @@ const Schema = mongoose.Schema;
 
 const ClassSchema = new Schema(
     {
-        date : Date,
-        paid : Boolean,
+        date : {
+            type : Date,
+            required : true
+        },
+        note : {
+            type : String,
+            default : "-"
+        },
+        paid : {
+            type : Boolean,
+            default : false
+        },
         parentId : Schema.Types.ObjectId,
     },
     { timestamps: true, versionKey: false }
