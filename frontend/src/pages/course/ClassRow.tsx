@@ -12,7 +12,7 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
     const [isChecked, setIsChecked] = useState(false);
     const [toggle, setToggle] = useState(false);
     const [classData, setClassData] = useState<classes>();
-    const classUri : string = `https://${import.meta.env.VITE_API_DOMAIN}/classes/${classId}`
+    const classUri : string = `${import.meta.env.VITE_API_DOMAIN}/classes/${classId}`
 
     useEffect(() => {
         fetchClass(classUri);

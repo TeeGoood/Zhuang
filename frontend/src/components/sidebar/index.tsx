@@ -14,8 +14,7 @@ const SideBar = (
     const [students, setStudents] = useState<student[]>();
     const {id} = useParams();
     const [keyword, setKeyword] = useState("");
-    
-    console.log(`api domain : ${import.meta.env.VITE_API_DOMAIN}`);
+
 
     async function fetch(url:string) {
         const response = await axios.get(url);
@@ -25,7 +24,7 @@ const SideBar = (
     }
 
     useEffect(() => {
-        fetch(`https://${import.meta.env.VITE_API_DOMAIN}/students`);
+        fetch(`${import.meta.env.VITE_API_DOMAIN}/students`);
     },[]);
     
 
