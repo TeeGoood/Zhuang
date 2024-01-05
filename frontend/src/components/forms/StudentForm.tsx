@@ -8,7 +8,7 @@ const StudentForm = () => {
         fname: "",
         lname: ""
     });
-    const uri = "https://localhost:9000/students";
+    const uri = `https://${import.meta.env.VITE_API_DOMAIN}/students`;
 
     const handleChange = (event : ChangeEvent<HTMLInputElement>) => {
         const name = event.target.name;
@@ -16,9 +16,9 @@ const StudentForm = () => {
         setInputs(values => ({...values, [name]: value}))
     }
 
-    const handleSubmit = (event : FormEvent) => {
+    const handleSubmit = async (event : FormEvent) => {
         event.preventDefault();
-        axios.post(uri, inputs);
+        await axios.post(uri, inputs);
         window.location.reload();
     }
 

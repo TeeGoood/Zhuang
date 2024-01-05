@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const CourseForm = () => {
     const {id} = useParams();
-    const uri = `https://localhost:9000/courses/${id}`;
+    const uri = `https://${import.meta.env.VITE_API_DOMAIN}/courses/${id}`;
 
     const [inputs, setInputs] = useState({
         name: "",
@@ -18,9 +18,9 @@ const CourseForm = () => {
         setInputs(values => ({...values, [name]: value}))
     }
 
-    const handleSubmit = (event : FormEvent) => {
+    const handleSubmit = async (event : FormEvent) => {
         event.preventDefault();
-        axios.post(uri, inputs);
+        await axios.post(uri, inputs);
         window.location.reload();
     }
 
