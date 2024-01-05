@@ -22,11 +22,11 @@ const router = createBrowserRouter([
         element: <Redirect />
       },
       {
-        path: "student/:id",
+        path: "students/:id",
         element: <Student />
       },
       {
-        path: "course/:id",
+        path: "courses/:id",
         element: <Course />
       }
     ]

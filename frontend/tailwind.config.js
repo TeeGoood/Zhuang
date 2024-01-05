@@ -20,7 +20,8 @@ export default {
         },
         approval: {
           normal: "#5CE01F",
-          light: "#D1F6C0"
+          light: "#D1F6C0",
+          checkbox: "#76e542"
         }
       },
       fontFamily:{

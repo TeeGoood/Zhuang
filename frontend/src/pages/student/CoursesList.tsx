@@ -1,15 +1,13 @@
 import CourseCard from "./CourseCard";
 
-const CoursesList = () => {
+const CoursesList = ({courses} : {courses : string[]}) => {
     return (  
-        <div className="grid grid-cols-2 gap-4">
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
+        <div className="grid grid-cols-1 gap-4 pb-6 lg:grid-cols-2">
+            {courses &&
+                courses.map((courseId) => {
+                    return <CourseCard courseId={courseId} key={courseId}/>;
+                })
+            }
         </div>
     );
 }
