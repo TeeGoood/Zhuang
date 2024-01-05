@@ -12,7 +12,7 @@ const Student = () => {
     const setMode : React.Dispatch<React.SetStateAction<Mode>> = useOutletContext();
     const [student, setStudent] = useState<student>();
     const {id} = useParams();
-    const uri = `http://${import.meta.env.VITE_API_DOMAIN}/students/${id}`;
+    const uri = `https://${import.meta.env.VITE_API_DOMAIN}/students/${id}`;
 
     useEffect(() => {
         fetchStudent(uri);

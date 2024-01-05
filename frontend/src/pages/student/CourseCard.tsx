@@ -5,7 +5,7 @@ import axios from "axios";
 
 const CourseCard = ({courseId} : {courseId : String}) => {
     const [course, setCourse] = useState<course>();
-    const uri : string = `http://${import.meta.env.VITE_API_DOMAIN}/courses/${courseId}`;
+    const uri : string = `https://${import.meta.env.VITE_API_DOMAIN}/courses/${courseId}`;
 
     useEffect(() => {
         fetchCourse(uri);
