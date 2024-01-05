@@ -6,7 +6,7 @@ import { useState } from "react"
 
 function App() {
   const [mode , setMode] = useState(Mode.NORMAL);
-
+  
   return (
     <div className="flex max-w-6xl mx-auto font-primary text-primary-dark">
       <SideBar setMode={setMode} />
