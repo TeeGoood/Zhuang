@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        { "source": "/students/:id", "destination": "/students/:id" },
+        { "source": "/courses/:id", "destination": "/courses/:id" },
+        { "source": "/(.*)", "destination": "/" }
+    ]
+}
+  
