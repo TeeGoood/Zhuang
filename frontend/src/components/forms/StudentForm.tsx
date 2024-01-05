@@ -8,7 +8,7 @@ const StudentForm = () => {
         fname: "",
         lname: ""
     });
-    const uri = "http://localhost:9000/students";
+    const uri = "https://localhost:9000/students";
 
     const handleChange = (event : ChangeEvent<HTMLInputElement>) => {
         const name = event.target.name;

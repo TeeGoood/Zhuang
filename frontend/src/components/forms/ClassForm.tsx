@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const ClassForm = () => {
     const {id} = useParams();
-    const uri = `http://localhost:9000/classes/${id}`;
+    const uri = `https://localhost:9000/classes/${id}`;
     const [inputs, setInputs] = useState({
         date: "",
         paid: false,
