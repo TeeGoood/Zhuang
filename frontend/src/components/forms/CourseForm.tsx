@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const CourseForm = () => {
     const {id} = useParams();
-    const uri = `${import.meta.env.VITE_API_DOMAIN}/courses/${id}`;
+    const uri = `${import.meta.env.VITE_API_URL}/courses/${id}`;
 
     const [inputs, setInputs] = useState({
         name: "",
