@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { course, student } from "../../../types";
+import { course } from "../../../types";
 import axios from "axios";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
