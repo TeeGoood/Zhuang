@@ -12,7 +12,7 @@ const ProfileCard = ({student} : {student : student}) => {
                         className="hover:bg-primary-light rounded-full w-7 h-7 p-1 transition cursor-pointer" />
                 </div>
                 <span className="text-primary-normal">
-                    {`${student.fname} ${student.lname}`}
+                    {`${student.note}`}
                 </span>
             </div>
             <div className="flex gap-2 items-center">

@@ -5,8 +5,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 const StudentForm = () => {
     const [inputs, setInputs] = useState({
         username: "",
-        fname: "",
-        lname: ""
+        note: ""
     });
     const uri = `${import.meta.env.VITE_API_URL}/students`;
 
@@ -37,23 +36,13 @@ const StudentForm = () => {
                     required
 
                 />
-                <label htmlFor="fname" className="text-slate-400">ชื่อ :</label>
+                <label htmlFor="note" className="text-slate-400">หมายเหตุ :</label>
                 <input
                     type="text"
                     className="outline-none border rounded-lg px-2 py-1"
-                    id="fname"
-                    name="fname"
-                    value={inputs.fname}
-                    onChange={(e) => handleChange(e)}
-                    required
-                />
-                <label htmlFor="lname" className="text-slate-400">นามสกุล :</label>
-                <input
-                    type="text"
-                    className="outline-none border rounded-lg px-2 py-1"
-                    id="lname"
-                    name="lname"
-                    value={inputs.lname}
+                    id="note"
+                    name="note"
+                    value={inputs.note}
                     onChange={(e) => handleChange(e)}
                     required
                 />
@@ -61,7 +50,8 @@ const StudentForm = () => {
             <div className="flex justify-end">
                 <button 
                     className="bg-primary-normal text-white px-2 py-1 rounded-full hover:bg-primary-notThatLight transition flex gap-2 items-center "
-                    type="submit">
+                    type="submit"
+                >
                     <span>เพิ่มนักเรียน</span>
                     <Icon icon="typcn:plus" color="white" />
                 </button>
