@@ -40,6 +40,22 @@ router.post('/', async (req, res) => {
 
 });
 
+router.put('/:id', async (req, res) => {
+    const {id} = req.params;
+    const payload = req.body;
+
+    try{
+        await Student.findByIdAndUpdate(id, {
+            $set : payload
+        });
+
+        res.send("update student succesfull");
+    }
+    catch(err){
+        res.send(err);
+    }
+});
+
 router.delete('/:id', async (req, res) => {
     const {id} = req.params;
 

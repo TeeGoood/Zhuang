@@ -51,7 +51,7 @@ router.put('/:id' , async (req, res) => {
         await Course.findByIdAndUpdate( id , {
             $set : payload
         });
-        res.send("update success");
+        res.send("update course success");
     }
     catch(err){
         res.send("err : " + err);
