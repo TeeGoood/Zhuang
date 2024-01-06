@@ -5,6 +5,7 @@ const ClassTable = ({classes} : {classes : String[]}) => {
         <table>
             <thead className="text-slate-400">
                 <tr className="border-y border-primary-light table-auto font-normal">
+                    <th></th>
                     <th>ครั้งที่</th>
                     <th className="text-start p-2">วันที่</th>
                     <th className="text-start">หมายเหตุ</th>

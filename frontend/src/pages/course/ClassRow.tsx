@@ -3,6 +3,8 @@ import { FC, useEffect, useState } from "react";
 import { classes } from "../../types";
 import axios from "axios";
 import DeleteWrapper from "../../components/delete/DeleteWrapper";
+import UpdateWrapper from "../../components/update/UpdateWrapper";
+import Mode from "../../components/forms/Mode";
 
 interface ClassRowProps{
     classId : String;
@@ -50,8 +52,11 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
         <> 
             {classData &&
                 <>
-                    <tr className="hover:bg-primary-soLight transition" onClick={() => setToggle(!toggle)}>
-                        <td>
+                    <tr className="hover:bg-primary-soLight transition " onClick={() => setToggle(!toggle)} >
+                        <td className="flex items-center justify-center my-auto">
+                            <UpdateWrapper mode={Mode.CLASS} oldData={classData} path={`/classes/${classId}`} />
+                        </td>
+                        <td className="text-center">
                             {order}
                         </td>
                         <td className="p-2">
@@ -59,7 +64,7 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
                                 `${classData.date.getDate()}/${classData.date.getMonth()+1}/${classData.date.getFullYear()}`
                             }
                         </td>
-                        <td className="w-[300px] line-clamp-1 pt-2">
+                        <td className="w-[300px] line-clamp-1">
                             {classData.note}
                         </td>
                         <td className={`text-center ${isChecked ? "text-approval-normal" : "text-danger-normal"}`}>
@@ -82,7 +87,7 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
                                 />
                             </div>
                         </td>
-                        <td>
+                        <td className="flex items-center justify-center">
                             <DeleteWrapper 
                                 name={`คลาสวันที่ ${classData.date.getDate()}/${classData.date.getMonth()+1}/${classData.date.getFullYear()}`}
                                 url={`/classes/${classData._id}`}
@@ -92,7 +97,7 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
                     {
                         toggle && 
                         <tr>
-                            <td colSpan={5} className="py-4 px-6 text-wrap overflow-hidden max-w-[400px] bg-primary-soLight">
+                            <td colSpan={7} className="py-4 px-6 text-wrap overflow-hidden max-w-[400px] bg-primary-soLight">
                                 {classData.note}
                             </td>
                         </tr>

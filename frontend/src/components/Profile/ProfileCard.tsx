@@ -1,5 +1,6 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
 import { student } from "../../types";
+import Mode from "../forms/Mode";
+import UpdateWrapper from "../update/UpdateWrapper";
 
 const ProfileCard = ({student} : {student : student}) => {
     return (  
@@ -7,9 +8,7 @@ const ProfileCard = ({student} : {student : student}) => {
             <div className="flex flex-col gap-1 ">
                 <div className="text-xl font-bold flex gap-4 items-center">
                     <span>{student.username}</span>
-                    <Icon 
-                        icon="pepicons-pencil:pen" color="#3559e0"
-                        className="hover:bg-primary-light rounded-full w-7 h-7 p-1 transition cursor-pointer" />
+                    <UpdateWrapper path={`/students/${student._id}`} mode={Mode.STUDENT} oldData={student}/>
                 </div>
                 <span className="text-primary-normal">
                     {`${student.note}`}
