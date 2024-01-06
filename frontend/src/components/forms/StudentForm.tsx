@@ -8,7 +8,7 @@ const StudentForm = () => {
         fname: "",
         lname: ""
     });
-    const uri = `https://${import.meta.env.VITE_API_DOMAIN}/students`;
+    const uri = `${import.meta.env.VITE_API_URL}/students`;
 
     const handleChange = (event : ChangeEvent<HTMLInputElement>) => {
         const name = event.target.name;

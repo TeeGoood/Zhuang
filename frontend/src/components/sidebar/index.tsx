@@ -24,7 +24,7 @@ const SideBar = (
     }
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_DOMAIN}/students`);
+        fetch(`${import.meta.env.VITE_API_URL}/students`);
     },[]);
     
 

@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { FC, useEffect, useState } from "react";
 import { classes } from "../../types";
 import axios from "axios";
+import DeleteWrapper from "../../components/delete/DeleteWrapper";
 
 interface ClassRowProps{
     classId : String;
@@ -12,7 +13,7 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
     const [isChecked, setIsChecked] = useState(false);
     const [toggle, setToggle] = useState(false);
     const [classData, setClassData] = useState<classes>();
-    const classUri : string = `${import.meta.env.VITE_API_DOMAIN}/classes/${classId}`
+    const classUri : string = `${import.meta.env.VITE_API_URL}/classes/${classId}`
 
     useEffect(() => {
         fetchClass(classUri);
@@ -80,6 +81,12 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
                                     height={30}
                                 />
                             </div>
+                        </td>
+                        <td>
+                            <DeleteWrapper 
+                                name={`คลาสวันที่ ${classData.date.getDate()}/${classData.date.getMonth()+1}/${classData.date.getFullYear()}`}
+                                url={`/classes/${classData._id}`}
+                            />
                         </td>
                     </tr >
                     {

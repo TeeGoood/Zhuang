@@ -7,12 +7,13 @@ import { Link, useOutletContext, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { course } from "../../types";
 import axios from "axios";
+import DeleteWrapper from "../../components/delete/DeleteWrapper";
 
 const Course = () => {
     const setMode : React.Dispatch<React.SetStateAction<Mode>> = useOutletContext();
     const [course, setCourse] = useState<course>();
     const {id} = useParams();
-    const uri : string = `${import.meta.env.VITE_API_DOMAIN}/courses/${id}`;
+    const uri : string = `${import.meta.env.VITE_API_URL}/courses/${id}`;
     
     useEffect(() => {
         fetchCourse(uri);
@@ -38,7 +39,10 @@ const Course = () => {
                         <Link to={`/students/${course.parentId}`}>
                             <Icon icon="material-symbols-light:arrow-back-ios" color="#3559e0" className="w-10 h-10  rounded-full p-1 transition hover:bg-primary-soLight" />
                         </Link>
-                        <Header text="ข้อมูลคอร์ส" />
+                        <div className="flex items-center justify-between flex-1">
+                            <Header text="ข้อมูลคอร์ส" />
+                            <DeleteWrapper name={course.name} url={`/courses/${id}`} />
+                        </div>
                     </div>
                     <CourseInfo course={course}/>
                     <div className="flex justify-between">
