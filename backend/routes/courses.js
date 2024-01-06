@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Course = require('../models/course');
 const Student = require('../models/student');
-const deleteMeFromParent = require('../functions/deletes');
 const Class = require('../models/class');
 
 router.get('/:id', async (req, res) => {
