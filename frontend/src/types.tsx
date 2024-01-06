@@ -1,8 +1,7 @@
 export type student = {
     _id : string;
     username : string;
-    fname : string;
-    lname : string;
+    note : string;
     courses : string[];
 }
 

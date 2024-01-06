@@ -1,9 +1,18 @@
+import { useParams } from "react-router-dom";
+import UpdateWrapper from "../../components/update/UpdateWrapper";
 import { course } from "../../types";
+import Mode from "../../components/forms/Mode";
 
 const CourseInfo = ({course} : {course : course}) => {
+    const {id} = useParams();
+
     return (  
         <div className="bg-primary-soLight py-4 px-7 rounded-lg flex justify-between items-center">
-            <p className="text-2xl font-semibold text-primary-normal">{course.name}</p>
+            <div className="flex items-center gap-2">
+                <p className="text-2xl font-semibold text-primary-normal">{course.name}</p>
+                <UpdateWrapper path={`/courses/${id}`} mode={Mode.COURSE} oldData={course} />
+            </div>
+
             <div className="flex gap-4 items-center">
                 <div className="text-slate-400 text-xs flex items-center gap-2">
                     เรียนไปเเล้ว

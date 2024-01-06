@@ -68,7 +68,7 @@ const ClassForm = () => {
                     หมายเหตุ
                 </label>
                 <textarea 
-                    className="p-2 border rounded-lg resize-none h-fit"
+                    className="outline-none border rounded-lg px-2 py-1 h-40"
                     id="note" 
                     name="note"
                     value={inputs.note}
