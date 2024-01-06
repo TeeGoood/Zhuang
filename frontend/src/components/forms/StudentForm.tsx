@@ -9,7 +9,7 @@ const StudentForm = () => {
     });
     const uri = `${import.meta.env.VITE_API_URL}/students`;
 
-    const handleChange = (event : ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event : ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
@@ -37,15 +37,14 @@ const StudentForm = () => {
 
                 />
                 <label htmlFor="note" className="text-slate-400">หมายเหตุ :</label>
-                <input
-                    type="text"
-                    className="outline-none border rounded-lg px-2 py-1"
+                <textarea
+                    className="outline-none border rounded-lg px-2 py-1 h-40"
                     id="note"
                     name="note"
                     value={inputs.note}
                     onChange={(e) => handleChange(e)}
                     required
-                />
+                ></textarea>
             </div>
             <div className="flex justify-end">
                 <button 
