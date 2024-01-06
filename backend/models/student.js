@@ -7,13 +7,8 @@ const StudentSchema = new Schema(
             type : String,
             required : true
         },
-        fname : {
+        note : {
             type : String,
-            required : true
-        },
-        lname : {
-            type : String,
-            required : true
         },
         courses : [Schema.Types.ObjectId]
     },
