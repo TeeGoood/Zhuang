@@ -2,17 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Course = require('../models/course');
 const Student = require('../models/student');
-
-/* const course = new Course({
-    name : "hsk 3",
-    courseLength : 10,
-    classTaken : 5,
-    paid : 4,
-    parentId : '65904f860963ef5326d3e520',
-    classes : []
-})
-
-course.save().then(() => console.log("finished!!!")); */
+const deleteMeFromParent = require('../functions/deletes');
+const Class = require('../models/class');
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
@@ -69,5 +60,38 @@ router.put('/:id' , async (req, res) => {
     
 });
 
+router.delete('/:id', async (req, res) => {
+    const {id} = req.params;
+
+    try{
+        const myObject = await Course.findByIdAndDelete(id);
+        const parentId = myObject.parentId;
+        const myArray = myObject.classes;
+        const parentObject = await Student.findById(parentId);
+        const parentArray = parentObject.courses;
+        
+        for(i = 0; i < parentArray.length; i++){
+            if(parentArray[i].toString() === id){
+                parentArray.splice(i, 1);
+                break;
+            }
+        }
+
+        await Student.findByIdAndUpdate(parentId, {
+            $set : {
+                courses : parentArray
+            }
+        });
+        
+        for(const childId of myArray){
+            await Class.findByIdAndDelete(childId);
+        }
+
+        res.send("delete course succesfull");
+    }
+    catch(err){
+        res.send(err);
+    }
+})
 
 module.exports = router;

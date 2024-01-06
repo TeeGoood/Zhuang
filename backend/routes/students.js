@@ -1,15 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Student = require('../models/student');
-
-/* const student = new Student({
-    username: "tee",
-    fname: "chayapon",
-    lname: "arpayatam",
-    courses: []
-})
-
-student.save().then(() => console.log("finished!!!")); */
+const Course = require('../models/course');
 
 router.get('/', async (req, res) => {
     try{
@@ -47,6 +39,24 @@ router.post('/', async (req, res) => {
     }
 
 });
+
+router.delete('/:id', async (req, res) => {
+    const {id} = req.params;
+
+    try{
+        const myObject = await Student.findByIdAndDelete(id);
+        const myArray = myObject.courses;
+        
+        for(const childId of myArray){
+            await Course.findByIdAndDelete(childId);
+        }
+
+        res.send("delete course succesfull");
+    }
+    catch(err){
+        res.send(err);
+    }
+})
 
 
 
