@@ -1,10 +1,10 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react/dist/iconify.js"
 
 const UpdateButton = ({setToggle} : {
         setToggle : React.Dispatch<React.SetStateAction<boolean>>
 }) => {
     const handleButtonClicked = () => {
-        setToggle(true);
+        setToggle(true)
     }
     
     return (  
@@ -16,7 +16,7 @@ const UpdateButton = ({setToggle} : {
                 onClick={handleButtonClicked}
             />
         </button>
-    );
+    )
 }
  
-export default UpdateButton;
+export default UpdateButton

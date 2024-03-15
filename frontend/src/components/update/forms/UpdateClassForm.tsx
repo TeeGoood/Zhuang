@@ -1,34 +1,34 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
-import axios from "axios";
-import { ChangeEvent, FormEvent, useState } from "react";
-import { classes } from "../../../types";
+import { Icon } from "@iconify/react/dist/iconify.js"
+import axios from "axios"
+import { ChangeEvent, FormEvent, useState } from "react"
+import { classes } from "@/types"
 
 const UpdateClassForm = ({path, classes, setToggle} : {
     path : string,
     classes : classes,
     setToggle : React.Dispatch<React.SetStateAction<boolean>>
 }) => {
-    const url = `${import.meta.env.VITE_API_URL}${path}`;
+    const url = `${import.meta.env.VITE_API_URL}${path}`
     const [inputs, setInputs] = useState({
         date: classes.date,
         paid: classes.paid,
         note: classes.note
-    });
+    })
 
     const handleChange = (event : ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
-        const name = event.target.name;
-        const value = event.target.value;
+        const name = event.target.name
+        const value = event.target.value
         setInputs(values => ({...values, [name]: value}))
     }
 
     const handleSubmit = async (event : FormEvent) => {
-        event.preventDefault();
-        await axios.put(url, inputs);
-        window.location.reload();
+        event.preventDefault()
+        await axios.put(url, inputs)
+        window.location.reload()
     }
 
     const handleBackgroundClicked = () => {
-        setToggle(false);
+        setToggle(false)
     }
 
     return (
@@ -100,7 +100,7 @@ const UpdateClassForm = ({path, classes, setToggle} : {
                 </div>
             </form>
         </div>
-    );
+    )
 }
  
-export default UpdateClassForm;
+export default UpdateClassForm

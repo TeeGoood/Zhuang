@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 
 interface nameCardProps{
-    name: string;
-    isActive: boolean;
+    name: string
+    isActive: boolean
 }
 
 const NameCard : React.FC<nameCardProps> = ({name, isActive}) => {
@@ -10,7 +10,7 @@ const NameCard : React.FC<nameCardProps> = ({name, isActive}) => {
         <div className= {`p-2 pl-7 rounded-full cursor-pointer text-lg hover:bg-primary-light hover:text-primary-normal transition ${isActive && "bg-primary-normal text-white font-semibold"}`}>
             {name}
         </div>
-    );
+    )
 }
  
-export default NameCard;
+export default NameCard

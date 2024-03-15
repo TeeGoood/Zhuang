@@ -1,10 +1,10 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { ChangeEvent } from "react";
+import { Icon } from "@iconify/react/dist/iconify.js"
+import { ChangeEvent } from "react"
 
 const SearchBar = ({setKeyword} : {setKeyword : React.Dispatch<React.SetStateAction<string>>}) => {
     const handleChange = (event : ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value;
-        setKeyword(() => value);
+        const value = event.target.value
+        setKeyword(() => value)
     }
 
     return (  
@@ -21,7 +21,7 @@ const SearchBar = ({setKeyword} : {setKeyword : React.Dispatch<React.SetStateAct
                 height={30} 
                 className="absolute ml-2"/>
         </div>
-    );
+    )
 }
  
-export default SearchBar;
+export default SearchBar

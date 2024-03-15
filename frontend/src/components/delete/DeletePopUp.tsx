@@ -1,5 +1,5 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
-import axios from "axios";
+import { Icon } from "@iconify/react/dist/iconify.js"
+import axios from "axios"
 
 const DeletePopUp = (
     {name, url, setToggle} : {
@@ -12,13 +12,13 @@ const DeletePopUp = (
 
     const handleButtonClicked = async (url : string) => {
         try{
-            await axios.delete(`${import.meta.env.VITE_API_URL}${url}`);
+            await axios.delete(`${import.meta.env.VITE_API_URL}${url}`)
         }
         catch(err){
-            console.log(err);
+            console.log(err)
         }
         finally{
-            window.location.reload();
+            window.location.reload()
         }
     }
 
@@ -47,7 +47,7 @@ const DeletePopUp = (
                 </div>
             </div>
         </div>
-    );
+    )
 }
  
-export default DeletePopUp;
+export default DeletePopUp

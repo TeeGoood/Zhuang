@@ -1,0 +1,9 @@
+POST http://localhost:9000/courses/65e0ad0b5ab4fe07178f0c2f
+Content-Type: application/json
+
+{
+    "name": "chinese 1",
+    "courseLength": 10
+}
+
+###

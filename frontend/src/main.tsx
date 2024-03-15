@@ -5,11 +5,11 @@ import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router-dom";
-import ErrorPage from './error-page.tsx';
-import Student from './pages/student/index.tsx';
-import Course from './pages/course/index.tsx';
-import Redirect from './pages/redirect/index.tsx';
+} from "react-router-dom"
+import ErrorPage from './error-page.tsx'
+import Student from './pages/student/page.tsx'
+import Course from './pages/course/page.tsx'
+import Redirect from './pages/redirect/page.tsx'
 
 const router = createBrowserRouter([
   {
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       }
     ]
   },
-]);
+])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

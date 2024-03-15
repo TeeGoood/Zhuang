@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom"
-import SideBar from "./components/sidebar"
-import FormWrapper from "./components/forms/FormWrapper"
-import Mode from "./components/forms/Mode"
+import SideBar from "@/components/Sidebar"
+import FormWrapper from "@/components/Form"
+import Mode from "@/components/Form/Mode"
 import { useState } from "react"
 
 function App() {
-  const [mode , setMode] = useState(Mode.NORMAL);
+  const [mode , setMode] = useState(Mode.NORMAL)
   
   return (
     <div className="flex max-w-6xl mx-auto font-primary text-primary-dark">

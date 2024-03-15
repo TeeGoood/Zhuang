@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const StudentSchema = new Schema(
     {
@@ -13,10 +13,10 @@ const StudentSchema = new Schema(
         courses : [Schema.Types.ObjectId]
     },
     { timestamps: true, versionKey: false }
-);
+)
 
-const Student = mongoose.model('student', StudentSchema);
+const Student = mongoose.model('student', StudentSchema)
 
-module.exports = Student;
+module.exports = Student
 
 

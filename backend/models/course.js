@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const CourseSchema = new Schema(
     {
@@ -11,10 +11,7 @@ const CourseSchema = new Schema(
             type : Number,
             required : true
         },
-        paid : {
-            type : Number,
-            default : 0
-        },
+        paidClasses : [Schema.Types.ObjectId] ,
         parentId : {
             type : Schema.Types.ObjectId,
             required : true
@@ -22,10 +19,10 @@ const CourseSchema = new Schema(
         classes : [Schema.Types.ObjectId] 
     },
     { timestamps: true, versionKey: false }
-);
+)
 
-const Course = mongoose.model('course', CourseSchema);
+const Course = mongoose.model('course', CourseSchema)
 
-module.exports = Course;
+module.exports = Course
 
 

@@ -1,26 +1,27 @@
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
+const express = require('express')
+const mongoose = require('mongoose')
 const cors = require('cors')
-const dotenv = require('dotenv');
-dotenv.config();
+const dotenv = require('dotenv')
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/course-dashboard';
-const PORT = process.env.PORT || 9000 ;
+dotenv.config()
+const app = express()
+const MONGODB_URL = process.env.MONGODB_URL
+const PORT = process.env.PORT
+mongoose.connect(MONGODB_URL)
 
-mongoose.connect(MONGODB_URI);
+app.use(express.json())
+app.use(cors())
 
-app.use(express.json());
-app.use(cors());
+const studentRouter = require('./routes/students')
+const courseRouter = require('./routes/courses')
+const classRouter = require('./routes/classes')
 
-const studentRouter = require('./routes/students');
-const courseRouter = require('./routes/courses');
-const classRouter = require('./routes/classes');
-
-app.use('/students', studentRouter);
-app.use('/courses', courseRouter);
-app.use('/classes', classRouter);
+app.use('/students', studentRouter)
+app.use('/courses', courseRouter)
+app.use('/classes', classRouter)
 
 app.listen(PORT , () => {
-    console.log(`go to http://localhost:${PORT}`);
-});
+    console.log(`go to http://localhost:${PORT}`)
+})
+
+

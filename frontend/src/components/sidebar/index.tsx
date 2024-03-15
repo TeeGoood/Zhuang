@@ -1,34 +1,31 @@
-import NameCard from "./NameCard";
-import { Icon } from '@iconify/react';
-import SearchBar from "./SearchBar";
-import React, { useEffect, useState } from "react";
-import Mode from "../forms/Mode";
-import { Link, useParams } from "react-router-dom";
-import axios from "axios";
-import { student } from "../../types";
+import { Icon } from '@iconify/react'
+import React, { useEffect, useState } from "react"
+import { Link, useParams } from "react-router-dom"
+import axios from "axios"
+import { student } from "@/types"
+import NameCard from "./NameCard"
+import SearchBar from "./SearchBar"
+import Mode from "@/components/Form/Mode"
 
 const SideBar = (
     {setMode} : 
     {setMode : React.Dispatch<React.SetStateAction<Mode>>}
 ) => {
-    const [students, setStudents] = useState<student[]>();
-    const {id} = useParams();
-    const [keyword, setKeyword] = useState("");
-
+    const [students, setStudents] = useState<student[]>()
+    const {id} = useParams()
+    const [keyword, setKeyword] = useState("")
 
     async function fetch(url:string) {
-        const response = await axios.get(url);
-        const data = response.data;
-        setStudents(data);
-        console.log(data);
+        const response = await axios.get(url)
+        const data = response.data
+        setStudents(data)
+        console.log(data)
     }
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/students`);
-    },[]);
+        fetch(`${import.meta.env.VITE_API_URL}/students`)
+    },[])
     
-
-
     return (  
         <div className="w-64 px-7 py-5 border-r border-r-primary-light">
             <h1 className="text-3xl font-bold mb-7 flex items-center gap-3">
@@ -36,7 +33,8 @@ const SideBar = (
                 <Icon 
                     icon="ph:student" color="#3559E0" 
                     width={30} 
-                    height={30}/>
+                    height={30}
+                />
             </h1>
             <SearchBar setKeyword={setKeyword}/>
             
@@ -52,22 +50,22 @@ const SideBar = (
                 </button>
                 {students &&
                     students.map((student) => {
-                        const studentId = student._id;
-                        const isActive = (id === studentId);
+                        const studentId = student._id
+                        const isActive = (id === studentId)
                         if(!student.username.includes(keyword)){
-                            return;
+                            return
                         }
 
                         return (
                             <Link to={`/students/${studentId}`} key={studentId}>
                                 <NameCard name={student.username} isActive={isActive} />
                             </Link>
-                        );
+                        )
                     })
                 }
             </div>
         </div>
-    );
+    )
 }
  
-export default SideBar;
+export default SideBar

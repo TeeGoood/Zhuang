@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react/dist/iconify.js"
 
 const DeleteButton = (
     {setToggle} : {
@@ -13,7 +13,7 @@ const DeleteButton = (
             <span>ลบ</span>
             <Icon icon="mdi:bin"  className="w-6 h-6"/>
         </button>
-    );
+    )
 }
  
-export default DeleteButton;
+export default DeleteButton
