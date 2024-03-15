@@ -2,14 +2,18 @@ const express = require('express')
 const router = express.Router()
 const Student = require('../models/student')
 const Course = require('../models/course')
+const Class = require('../models/class')
 
 router.get('/', async (req, res) => {
     try{
         const students = await Student.find({})
         res.json(students)
     }
-    catch(err){
-        res.send("error : " + err)
+    catch(error){
+        console.log('error message: ', error.message)
+        res.status(500).json({
+            error: 'cannot found student'
+        })
     }
 })
 
@@ -17,25 +21,30 @@ router.get('/:id', async (req, res) => {
     const {id} = req.params
 
     try{
-        const student = await Student.find({ _id : id})
+        const student = await Student.findById(id)
         res.json(student)
     }
-    catch(err){
-        res.send("error : " + err)
+    catch(error){
+        console.log('error message: ', error.message)
+        res.status(500).json({
+            error: `cannot found student ${id}`
+        })
     }
 })
 
 router.post('/', async (req, res) => {
     const payload = req.body
     const student = new Student(payload)
-    console.log("student create")
 
     try{
         await student.save()
-        res.status(201).send("post succesfull")
+        res.json({ message: 'create student succesfull' })
     }
-    catch(err){
-        res.send("error : " + err)
+    catch(error){
+        console.log('error message: ', error.message)
+        res.status(500).json({
+            error: `cannot create student`
+        })
     }
 
 })
@@ -49,10 +58,13 @@ router.put('/:id', async (req, res) => {
             $set : payload
         })
 
-        res.send("update student succesfull")
+        res.json({ message: 'create student succesfull' })
     }
-    catch(err){
-        res.send(err)
+    catch(error){
+        console.log('error message: ', error.message)
+        res.status(500).json({
+            error: `cannot update student${id}`
+        })
     }
 })
 
@@ -60,17 +72,20 @@ router.delete('/:id', async (req, res) => {
     const {id} = req.params
 
     try{
-        const myObject = await Student.findByIdAndDelete(id)
-        const myArray = myObject.courses
-        
-        for(const childId of myArray){
-            await Course.findByIdAndDelete(childId)
+        const deleteStudent = await Student.findByIdAndDelete(id)
+        for(const courseId of deleteStudent.courses){
+            const deletedCourse = await Course.findByIdAndDelete(courseId)
+            await Class.deleteMany({
+                _id: { $in: deletedCourse.classes }
+            })
         }
-
-        res.send("delete course succesfull")
+        res.json({ message: `delete student ${id} success` })
     }
-    catch(err){
-        res.send(err)
+    catch(error){
+        console.log('error message: ', error.message)
+        res.status(500).json({
+            error: `cannot delete student${id}`
+        })
     }
 })
 

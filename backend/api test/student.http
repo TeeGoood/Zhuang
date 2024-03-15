@@ -1,0 +1,10 @@
+POST http://localhost:9000/students 
+Content-Type: application/json
+
+{
+    "username": "tee"
+}
+
+###
+
+DELETE http://localhost:9000/students/65f3cdff6013a2fa62a2ea65
