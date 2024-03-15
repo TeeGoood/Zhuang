@@ -1,7 +1,7 @@
 GET http://localhost:9000/classes/65e0ac2b5ab4fe07178f0bbb
 
 ###
-POST http://localhost:9000/classes/65f33b6b95953d0e7a3e8328
+POST http://localhost:9000/classes/65f3c78ec471a5170d749f80
 Content-type: application/json
 
 {

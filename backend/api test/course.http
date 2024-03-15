@@ -7,3 +7,7 @@ Content-Type: application/json
 }
 
 ###
+
+DELETE http://localhost:9000/courses/65f3c78ec471a5170d749f80
+
+###

@@ -21,25 +21,26 @@ router.post('/:parentId', async (req, res) => {
     const { parentId } = req.params
     const payload = req.body
     payload.parentId = parentId
-    console.log(payload)
     const course = new Course(payload)
 
     try{
-        const student = await Student.findById(parentId)
-        const courses = student.courses
         const id = (await course.save())._id
-        courses.push(id)
+        const student = await Student.findById(parentId)
+        const newStudentCourses = [ ...student.courses, id ]
 
         await Student.findByIdAndUpdate(parentId, {
             $set: {
-                courses : courses
+                courses : newStudentCourses
             }
+            
         })
-
-        res.status(201).send("post course success")
+        res.json({ message: "create courses success" })
     }
-    catch(err){
-        res.send("err : " + err)
+    catch(error){
+        console.log('error message: ', error.message)
+        res.status(500).json({
+            error: 'create course fail'
+        })
     }
 
 })
@@ -52,10 +53,13 @@ router.put('/:id' , async (req, res) => {
         await Course.findByIdAndUpdate( id , {
             $set : payload
         })
-        res.send("update course success")
+        res.json({ message: "update courses success" })
     }
-    catch(err){
-        res.send("err : " + err)
+    catch(error){
+        console.log('error message: ', error.message)
+        res.status(500).json({
+            error: 'update course fail'
+        })
     }
     
 })
@@ -64,33 +68,23 @@ router.delete('/:id', async (req, res) => {
     const {id} = req.params
 
     try{
-        const myObject = await Course.findByIdAndDelete(id)
-        const parentId = myObject.parentId
-        const myArray = myObject.classes
-        const parentObject = await Student.findById(parentId)
-        const parentArray = parentObject.courses
-        
-        for(i = 0 ;i < parentArray.length; i++){
-            if(parentArray[i].toString() === id){
-                parentArray.splice(i, 1)
-                break
-            }
-        }
-
-        await Student.findByIdAndUpdate(parentId, {
-            $set : {
-                courses : parentArray
-            }
+        const deletedCourse = await Course.findByIdAndDelete(id)
+        const parentStudent = await Student.findById(deletedCourse.parentId)
+        const updatedCourse = parentStudent.courses.filter((course) => {
+            return course._id != id
         })
-        
-        for(const childId of myArray){
-            await Class.findByIdAndDelete(childId)
-        }
-
-        res.send("delete course succesfull")
+        await Student.findByIdAndUpdate(deletedCourse.parentId, {
+            $set:{ courses: updatedCourse }
+        }) 
+        await Class.deleteMany({
+            _id: { $in: deletedCourse.classes }
+        })
     }
-    catch(err){
-        res.send(err)
+    catch(error){
+        console.log('error message: ', error.message)
+        res.status(500).json({
+            error: 'delete course fail'
+        })
     }
 })
 
