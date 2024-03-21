@@ -51,6 +51,7 @@ router.post('/:parentId' , async (req, res) => {
 router.put('/:id', async (req, res) => {
     const {id} = req.params;
     const payload = req.body;
+    console.log(payload);
 
     try{
         await Class.findByIdAndUpdate(id, {

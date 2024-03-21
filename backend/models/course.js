@@ -15,6 +15,10 @@ const CourseSchema = new Schema(
             type : Number,
             default : 0
         },
+        isPaid : {
+            type : Boolean,
+            default : false
+        },
         parentId : {
             type : Schema.Types.ObjectId,
             required : true
