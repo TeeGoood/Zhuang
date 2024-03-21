@@ -13,11 +13,21 @@ const Course = () => {
     const setMode : React.Dispatch<React.SetStateAction<Mode>> = useOutletContext();
     const [course, setCourse] = useState<course>();
     const {id} = useParams();
+    const [paid, setPaid] = useState<number>(0);
     const uri : string = `${import.meta.env.VITE_API_URL}/courses/${id}`;
     
     useEffect(() => {
         fetchCourse(uri);
     }, [id]);
+
+    useEffect(() => {
+        axios.put(uri, {
+            body : {
+                isPaid : paid === course?.courseLength
+            }
+        });
+        console.log(paid);
+    }, [paid])
 
     const fetchCourse = async (uri:string) => {
         try{
@@ -29,6 +39,23 @@ const Course = () => {
         catch(err){
             console.log(err);
         }
+    }
+
+    const handleChangePaid = (isPlus: boolean) => {
+        /* if(!course) return;
+        const value = course.paid + number;
+        const data = course as course;
+        setCourse({...data, paid: value});
+        axios.put(uri, {
+            body:{
+                paid: 
+            }
+        });
+        console.log({
+            paid: value
+        }); */
+        let value = isPlus ? 1 : -1;
+        setPaid(old => old + value);
     }
 
     return (
@@ -58,7 +85,7 @@ const Course = () => {
                             <Icon icon="typcn:plus" color="white" />
                         </button>}
                     </div>
-                    <ClassTable classes={course.classes} />
+                    <ClassTable classes={course.classes} onCheckPaid={handleChangePaid}/>
                 </div>
             }
         </>

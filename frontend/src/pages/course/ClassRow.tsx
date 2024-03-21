@@ -9,9 +9,10 @@ import Mode from "../../components/forms/Mode";
 interface ClassRowProps{
     classId : String;
     order : number;
+    onCheckPaid: (isPlus : boolean) => void;
 }
 
-const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
+const ClassRow : FC<ClassRowProps> = ({classId, order, onCheckPaid}) => {
     const [isChecked, setIsChecked] = useState(false);
     const [toggle, setToggle] = useState(false);
     const [classData, setClassData] = useState<classes>();
@@ -21,6 +22,10 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
         fetchClass(classUri);
     },[]);
 
+    useEffect(() => {
+        
+    }, [classData])
+
     const fetchClass = async (uri:string) => {
         try{
             const response = await axios.get(uri);
@@ -28,6 +33,9 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
             data.date = new Date(data.date);
             setClassData(() => data);
             setIsChecked(() => data.paid);
+            if(data.paid){
+                onCheckPaid(data.paid);
+            }
         }
         catch(err){
             console.log(err);
@@ -46,6 +54,7 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
             console.log(err);
         }
         setIsChecked(value);
+        onCheckPaid(value);
     }
 
     return (
@@ -67,8 +76,8 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
                         <td className="w-[300px] line-clamp-1">
                             {classData.note}
                         </td>
-                        <td className={`text-center ${isChecked ? "text-approval-normal" : "text-danger-normal"}`}>
-                            {isChecked ? "เรียบร้อย" : "ไม่เรียบร้อย"}
+                        <td className={`text-center ${isChecked ? "text-approval-normal" : "text-danger-normal"} z-0`}>
+                            {isChecked ? "จ่ายเเล้ว" : "ยังไม่จ่าย"}
                         </td>
                         <td>
                             <div className="relative w-6 h-6">
@@ -76,7 +85,7 @@ const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
                                     type="checkbox"
                                     className="appearance-none bg-slate-100 hover:bg-white rounded-full w-full h-full peer cursor-pointer"
                                     checked={isChecked}
-                                    onClick={(e) => handdleCheck(e)}
+                                    onChange={(e) => handdleCheck(e)}
                                 />
                                 <Icon           
                                     icon="lets-icons:check-fill" 

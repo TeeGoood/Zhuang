@@ -32,7 +32,7 @@ const SideBar = (
     return (  
         <div className="w-64 px-7 py-5 border-r border-r-primary-light">
             <h1 className="text-3xl font-bold mb-7 flex items-center gap-3">
-                <span className="text-primary-normal">Zhuang</span>
+                <span className="text-primary-normal">Courses</span>
                 <Icon 
                     icon="ph:student" color="#3559E0" 
                     width={30} 
@@ -50,7 +50,7 @@ const SideBar = (
                     </span>
                     <Icon icon="typcn:plus" color="white" />
                 </button>
-                {students &&
+                {students ?
                     students.map((student) => {
                         const studentId = student._id;
                         const isActive = (id === studentId);
@@ -64,6 +64,8 @@ const SideBar = (
                             </Link>
                         );
                     })
+                    :
+                    <div>loading...</div>
                 }
             </div>
         </div>

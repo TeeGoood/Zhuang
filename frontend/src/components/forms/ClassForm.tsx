@@ -41,10 +41,10 @@ const ClassForm = () => {
                         required
                     />
                 </div>
-                <label htmlFor="paid" className="text-slate-400">เรียบร้อย :</label>
+                <label htmlFor="paid" className="text-slate-400">จ่ายเเล้ว :</label>
                 <div className="flex gap-4">
                     <span className={`${inputs.paid ? "text-approval-normal" : "text-danger-normal"}`}>
-                        {inputs.paid ? "เรียบร้อย" : "ไม่เรียบร้อย"}
+                        {inputs.paid ? "จ่ายเเล้ว" : "ยังไม่จ่าย"}
                     </span>
                     <div className="relative w-6 h-6">
                         <input

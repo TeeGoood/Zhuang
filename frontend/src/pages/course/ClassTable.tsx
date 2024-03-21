@@ -1,6 +1,11 @@
 import ClassRow from "./ClassRow";
 
-const ClassTable = ({classes} : {classes : String[]}) => {
+interface ClassTableProps{
+    classes: String[];
+    onCheckPaid: (isPlus : boolean) => void;
+}
+
+const ClassTable = (props: ClassTableProps) => {
     return (  
         <table>
             <thead className="text-slate-400">
@@ -14,8 +19,8 @@ const ClassTable = ({classes} : {classes : String[]}) => {
             </thead>
             <tbody>
                 {
-                    classes.map((classId, order) => {
-                        return (<ClassRow classId={classId} order={order+1}/>)
+                    props.classes.map((classId, order) => {
+                        return (<ClassRow classId={classId} order={order+1} onCheckPaid={props.onCheckPaid} key={order}/>)
                     })
                 }
             </tbody>

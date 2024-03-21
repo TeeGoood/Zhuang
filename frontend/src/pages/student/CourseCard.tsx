@@ -43,9 +43,9 @@ const CourseCard = ({courseId} : {courseId : String}) => {
                                 </span>
                             </span>
                         </div>
-                        <div className={`${ course.paid === course.courseLength ? "bg-approval-normal" : "bg-danger-normal"} text-white py px-3 rounded-full`} >
+                        {/* <div className={`${ course.paid === course.courseLength ? "bg-approval-normal" : "bg-danger-normal"} text-white py px-3 rounded-full`} >
                             {course.paid === course.courseLength ? "เรียบร้อย" : "ไม่เรียบร้อย"}
-                        </div>
+                        </div> */}
                     </div>
                 </Link>
             }
