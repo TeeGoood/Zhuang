@@ -5,18 +5,17 @@ import axios from "axios";
 
 const CourseCard = ({courseId} : {courseId : String}) => {
     const [course, setCourse] = useState<course>();
-    const uri : string = `${import.meta.env.VITE_API_URL}/courses/${courseId}`;
+    const url : string = `${import.meta.env.VITE_API_URL}/courses/${courseId}`;
 
     useEffect(() => {
-        fetchCourse(uri);
+        fetchCourse(url);
     }, [])
 
-    const fetchCourse = async (uri:string) => {
+    const fetchCourse = async (url:string) => {
         try{
-            const response = await axios.get(uri);
+            const response = await axios.get(url);
             const data = response.data;
             setCourse(data[0]); 
-            console.log(data[0]);
         }
         catch(err){
             console.log(err);
@@ -43,9 +42,9 @@ const CourseCard = ({courseId} : {courseId : String}) => {
                                 </span>
                             </span>
                         </div>
-                        {/* <div className={`${ course.paid === course.courseLength ? "bg-approval-normal" : "bg-danger-normal"} text-white py px-3 rounded-full`} >
-                            {course.paid === course.courseLength ? "เรียบร้อย" : "ไม่เรียบร้อย"}
-                        </div> */}
+                        <div className={`${ course.paidClasses.length === course.courseLength ? "bg-approval-normal" : "bg-danger-normal"} text-white py px-3 rounded-full`} >
+                            {course.paidClasses.length === course.courseLength ? "เรียบร้อย" : "ไม่เรียบร้อย"}
+                        </div>
                     </div>
                 </Link>
             }

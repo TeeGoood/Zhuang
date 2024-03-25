@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const useFetch = async (uri : string) => {
-    const res = await axios.get(uri);
+const useFetch = async (url : string) => {
+    const res = await axios.get(url);
     const data = res.data;
 
     return data;

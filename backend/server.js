@@ -5,10 +5,10 @@ const cors = require('cors')
 const dotenv = require('dotenv');
 dotenv.config();
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/course-dashboard';
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://127.0.0.1/course-dashboard';
 const PORT = process.env.PORT || 9000 ;
 
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URL);
 
 app.use(express.json());
 app.use(cors());

@@ -9,10 +9,9 @@ export type course = {
     _id : string;
     name: string;
     courseLength : Number;
-    paid : number;
     parentId : string;
     classes : string[];
-    isPaid: boolean;
+    paidClasses: string[];
 }
 
 export type classes = {

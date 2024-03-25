@@ -169,7 +169,7 @@ packages:
       strftime: 0.10.2
       strip-ansi: 6.0.1
       term-img: 4.1.0
-      urijs: 1.19.11
+      urljs: 1.19.11
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -354,7 +354,7 @@ packages:
       ip-address: 5.9.4
     dev: false
 
-  /@jridgewell/resolve-uri@3.1.2:
+  /@jridgewell/resolve-url@3.1.2:
     resolution: {integrity: sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==}
     engines: {node: '>=6.0.0'}
     dev: false
@@ -366,7 +366,7 @@ packages:
   /@jridgewell/trace-mapping@0.3.9:
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
     dependencies:
-      '@jridgewell/resolve-uri': 3.1.2
+      '@jridgewell/resolve-url': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: false
 
@@ -691,7 +691,7 @@ packages:
     dev: false
 
   /@oclif/plugin-warn-if-update-available@2.0.29(@types/node@20.11.30)(typescript@5.4.3):
-    resolution: {integrity: sha512-F69P5DwKzKYQgIND//ekFWTo7IGHhSOgC9mC3SieImP0+X8catxnyxSHZZA1uElSntK4xqGyd9ZPuURilBTJOw==}
+    resolution: {integrity: sha512-F69P5DwKzKYQgIND//ekFWTo7IGHhSOgC9mC3SieImP0+X8catxnyxSHZZA1uElSntK4xqGyd9ZPuurllBTJOw==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@oclif/core': 2.15.0(@types/node@20.11.30)(typescript@5.4.3)
@@ -1689,7 +1689,7 @@ packages:
     dev: false
     optional: true
 
-  /decode-uri-component@0.2.2:
+  /decode-url-component@0.2.2:
     resolution: {integrity: sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==}
     engines: {node: '>=0.10'}
     dev: false
@@ -2414,7 +2414,7 @@ packages:
       tmp: 0.0.33
       true-myth: 2.2.3
       tslib: 1.14.1
-      urijs: 1.19.11
+      urljs: 1.19.11
       uuid: 3.3.2
       valid-url: 1.0.9
       validator: 13.11.0
@@ -3506,9 +3506,9 @@ packages:
     resolution: {integrity: sha512-gjWOsm2SoGlgLEdAGt7a6slVOk9mGiXmPFMqrEhLQ68rhQuBnpfs3+EmlvqKyxnCo9/PPlF+9MtY02S1aFg+Jw==}
     engines: {node: '>=0.10.0'}
     dependencies:
-      decode-uri-component: 0.2.2
+      decode-url-component: 0.2.2
       object-assign: 4.1.1
-      strict-uri-encode: 1.1.0
+      strict-url-encode: 1.1.0
     dev: false
 
   /querystringify@2.2.0:
@@ -3925,7 +3925,7 @@ packages:
     engines: {node: '>=0.2.0'}
     dev: false
 
-  /strict-uri-encode@1.1.0:
+  /strict-url-encode@1.1.0:
     resolution: {integrity: sha512-R3f198pcvnB+5IpnBlRkphuE9n46WyVl8I39W/ZUTZLz4nqSP/oLYUrcnJrw462Ds8he4YKMov2efsTIw1BDGQ==}
     engines: {node: '>=0.10.0'}
     dev: false
@@ -4270,7 +4270,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /urijs@1.19.11:
+  /urljs@1.19.11:
     resolution: {integrity: sha512-HXgFDgDommxn5/bIv0cnQZsPhHDA90NPHD6+c/v21U5+Sx5hoP8+dP9IZXBU1gIfvdRfhG8cel9QNPeionfcCQ==}
     dev: false
 

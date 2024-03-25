@@ -20,7 +20,6 @@ const SideBar = (
         const response = await axios.get(url);
         const data = response.data;
         setStudents(data);
-        console.log(data);
     }
 
     useEffect(() => {

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const ClassForm = () => {
     const {id} = useParams();
-    const uri = `${import.meta.env.VITE_API_URL}/classes/${id}`;
+    const url = `${import.meta.env.VITE_API_URL}/classes/${id}`;
     const [inputs, setInputs] = useState({
         date: "",
         paid: false,
@@ -20,7 +20,7 @@ const ClassForm = () => {
 
     const handleSubmit = async (event : FormEvent) => {
         event.preventDefault();
-        await axios.post(uri, inputs);
+        await axios.post(url, inputs);
         window.location.reload();
     }
 

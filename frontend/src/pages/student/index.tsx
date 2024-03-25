@@ -13,17 +13,17 @@ const Student = () => {
     const setMode : React.Dispatch<React.SetStateAction<Mode>> = useOutletContext();
     const [student, setStudent] = useState<student>();
     const {id} = useParams();
-    const uri = `${import.meta.env.VITE_API_URL}/students/${id}`;
+    const url = `${import.meta.env.VITE_API_URL}/students/${id}`;
 
     useEffect(() => {
-        fetchStudent(uri);
+        fetchStudent(url);
     },[id]);
 
-    const fetchStudent = async (uri : string) => {
+    const fetchStudent = async (url : string) => {
         try{
-            const response = await axios.get(uri);
+            const response = await axios.get(url);
             const data = response.data;
-            setStudent(data[0]);
+            setStudent(data);
         }
         catch(err){
             console.log(err);

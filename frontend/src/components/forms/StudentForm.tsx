@@ -7,7 +7,7 @@ const StudentForm = () => {
         username: "",
         note: ""
     });
-    const uri = `${import.meta.env.VITE_API_URL}/students`;
+    const url = `${import.meta.env.VITE_API_URL}/students`;
 
     const handleChange = (event : ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
         const name = event.target.name;
@@ -17,7 +17,7 @@ const StudentForm = () => {
 
     const handleSubmit = async (event : FormEvent) => {
         event.preventDefault();
-        await axios.post(uri, inputs);
+        await axios.post(url, inputs);
         window.location.reload();
     }
 

@@ -9,33 +9,29 @@ import Mode from "../forms/Mode";
 interface ClassRowProps{
     classId : String;
     order : number;
-    onCheckPaid: (isPlus : boolean) => void;
 }
 
-const ClassRow : FC<ClassRowProps> = ({classId, order, onCheckPaid}) => {
+const ClassRow : FC<ClassRowProps> = ({classId, order}) => {
     const [isChecked, setIsChecked] = useState(false);
     const [toggle, setToggle] = useState(false);
     const [classData, setClassData] = useState<classes>();
-    const classUri : string = `${import.meta.env.VITE_API_URL}/classes/${classId}`
+    const classurl : string = `${import.meta.env.VITE_API_URL}/classes/${classId}`
 
     useEffect(() => {
-        fetchClass(classUri);
+        fetchClass(classurl);
     },[]);
 
     useEffect(() => {
         
     }, [classData])
 
-    const fetchClass = async (uri:string) => {
+    const fetchClass = async (url:string) => {
         try{
-            const response = await axios.get(uri);
+            const response = await axios.get(url);
             const data = response.data[0];
             data.date = new Date(data.date);
             setClassData(() => data);
             setIsChecked(() => data.paid);
-            if(data.paid){
-                onCheckPaid(data.paid);
-            }
         }
         catch(err){
             console.log(err);
@@ -47,14 +43,12 @@ const ClassRow : FC<ClassRowProps> = ({classId, order, onCheckPaid}) => {
         event.stopPropagation();
         const value = !isChecked;
         try{
-            const response = await axios.put(classUri, {paid : value});
-            console.log(response);
+            await axios.put(classurl, {paid : value});
         }
         catch(err){
             console.log(err);
         }
         setIsChecked(value);
-        onCheckPaid(value);
     }
 
     return (
@@ -77,7 +71,7 @@ const ClassRow : FC<ClassRowProps> = ({classId, order, onCheckPaid}) => {
                             {classData.note}
                         </td>
                         <td className={`text-center ${isChecked ? "text-approval-normal" : "text-danger-normal"} z-0`}>
-                            {isChecked ? "จ่ายเเล้ว" : "ยังไม่จ่าย"}
+                            {isChecked ? "เรียบร้อย" : "ไม่เรียบร้อย"}
                         </td>
                         <td>
                             <div className="relative w-6 h-6">

@@ -28,6 +28,7 @@ router.post('/:parentId' , async (req, res) => {
     try{
         const parentCourse = await Course.findById(parentId)
         const parentClasses = parentCourse.classes
+        const parentPaidClasses = parentCourse.paidClasses
         const classTaken = parentClasses.length
         const courseLength = parentCourse.courseLength
 
@@ -38,10 +39,14 @@ router.post('/:parentId' , async (req, res) => {
 
         const id = (await newClass.save())._id
         parentClasses.push(id)
+        if(payload.paid){
+            parentPaidClasses.push(id)
+        }
 
         await Course.findByIdAndUpdate(parentId, {
             $set: {
                 classes : parentClasses,
+                paidClasses: parentPaidClasses
             }
         })
 
@@ -105,10 +110,14 @@ router.delete('/:id' , async (req, res) => {
         const parentClasses = parentObj.classes.filter((classId) => {
             return classId != id
         })
+        const parentPaidClasses = parentObj.paidClasses.filter((classId) => {
+            return classId != id
+        })
 
         await Course.findByIdAndUpdate(parentId, {
             $set: {
-                classes: parentClasses 
+                classes: parentClasses,
+                paidClasses: parentPaidClasses
             }
         })
 

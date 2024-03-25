@@ -2,7 +2,6 @@ import ClassRow from "./ClassRow";
 
 interface ClassTableProps{
     classes: String[];
-    onCheckPaid: (isPlus : boolean) => void;
 }
 
 const ClassTable = (props: ClassTableProps) => {
@@ -20,7 +19,7 @@ const ClassTable = (props: ClassTableProps) => {
             <tbody>
                 {
                     props.classes.map((classId, order) => {
-                        return (<ClassRow classId={classId} order={order+1} onCheckPaid={props.onCheckPaid} key={order}/>)
+                        return (<ClassRow classId={classId} order={order+1} key={order}/>)
                     })
                 }
             </tbody>
