@@ -2,9 +2,9 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { FC, useEffect, useState } from "react";
 import { classes } from "../../types";
 import axios from "axios";
-import DeleteWrapper from "../../components/delete/DeleteWrapper";
-import UpdateWrapper from "../../components/update/UpdateWrapper";
-import Mode from "../../components/forms/Mode";
+import DeleteWrapper from "../delete/DeleteWrapper";
+import UpdateWrapper from "../update/UpdateWrapper";
+import Mode from "../forms/Mode";
 
 interface ClassRowProps{
     classId : String;

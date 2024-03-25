@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Header from "../../components/Header";
-import CourseInfo from "./CourseInfo";
-import ClassTable from "./ClassTable";
+import CourseInfo from "../../components/course/CourseInfo";
+import ClassTable from "../../components/class/ClassTable";
 import Mode from "../../components/forms/Mode";
 import { Link, useOutletContext, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";

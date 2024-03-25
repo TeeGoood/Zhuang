@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import UpdateWrapper from "../../components/update/UpdateWrapper";
+import UpdateWrapper from "../update/UpdateWrapper";
 import { course } from "../../types";
-import Mode from "../../components/forms/Mode";
+import Mode from "../forms/Mode";
 
 const CourseInfo = ({course} : {course : course}) => {
     const {id} = useParams();

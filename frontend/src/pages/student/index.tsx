@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Header from "../../components/Header";
 import ProfileCard from "../../components/Profile/ProfileCard";
-import CoursesList from "./CoursesList";
+import CoursesList from "../../components/course/CoursesList";
 import Mode from "../../components/forms/Mode";
 import { useOutletContext, useParams } from "react-router-dom";
 import { student } from "../../types";
@@ -24,7 +24,6 @@ const Student = () => {
             const response = await axios.get(uri);
             const data = response.data;
             setStudent(data[0]);
-            console.log(data[0]);
         }
         catch(err){
             console.log(err);

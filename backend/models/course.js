@@ -11,14 +11,6 @@ const CourseSchema = new Schema(
             type : Number,
             required : true
         },
-        paid : {
-            type : Number,
-            default : 0
-        },
-        isPaid : {
-            type : Boolean,
-            default : false
-        },
         parentId : {
             type : Schema.Types.ObjectId,
             required : true
@@ -31,5 +23,4 @@ const CourseSchema = new Schema(
 const Course = mongoose.model('course', CourseSchema);
 
 module.exports = Course;
-
 
